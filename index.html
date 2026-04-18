@@ -5,225 +5,383 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eve Labs — Contenido & Productos</title>
     <meta name="description" content="Eve Labs. Drulen, Pergaminos Prohibidos, Automatización con IA, Audio Bundle.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e0e0e0;
-            min-height: 100vh;
-            padding: 2rem;
+        
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --accent: #ff3366;
+            --accent-glow: rgba(255, 51, 102, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #8a8a9a;
+            --gradient-1: linear-gradient(135deg, #ff3366 0%, #ff6b6b 100%);
+            --gradient-2: linear-gradient(180deg, #0a0a0f 0%, #1a1a24 100%);
         }
-        .container {
-            max-width: 900px;
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        
+        .logo {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        h1 {
-            font-size: 3rem;
-            text-align: center;
-            color: #e94560;
-            text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
-            margin-bottom: 0.5rem;
-            letter-spacing: 3px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #a0a0a0;
-            margin-bottom: 3rem;
-            font-size: 1.2rem;
-        }
         
-        .section {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        .section h2 {
-            color: #e94560;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
         
-        .channels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-        .channel-card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-        .channel-card:hover {
-            background: rgba(233, 69, 96, 0.2);
-            transform: translateY(-3px);
-        }
-        .channel-card h3 {
-            color: #e94560;
-            margin-bottom: 0.5rem;
-        }
-        .channel-card p {
-            color: #a0a0a0;
-            font-size: 0.9rem;
-        }
-        .channel-badge {
-            display: inline-block;
-            background: #e94560;
-            color: #fff;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            margin-bottom: 0.5rem;
+        .section-title span { font-size: 1.5rem; }
+        
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
         }
         
-        .products-grid {
+        /* Cards Grid */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
-        .product-card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 1.5rem;
+        
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
             text-decoration: none;
-            color: #fff;
-            transition: all 0.3s ease;
+            color: var(--text-primary);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
-        .product-card:hover {
-            background: rgba(233, 69, 96, 0.2);
-            transform: scale(1.02);
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
-        .product-card h3 {
-            color: #e94560;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+        
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,51,102,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 60px var(--accent-glow);
         }
-        .product-card p {
-            color: #a0a0a0;
-            font-size: 0.85rem;
-        }
-        .product-price {
+        
+        .card:hover::before { transform: scaleX(1); }
+        
+        .card-badge {
             display: inline-block;
-            background: #e94560;
+            background: var(--accent);
             color: #fff;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            margin-top: 0.8rem;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Product Cards */
+        .product-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            border-color: rgba(255,51,102,0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .product-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .product-btn {
+            background: #ff4477;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+        
+        /* Social Links */
         .social-links {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            padding: 4rem 2rem;
+            background: var(--bg-secondary);
         }
+        
         .social-link {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.7rem 1.2rem;
+            background: var(--bg-card);
+            padding: 1rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
-            color: #fff;
+            color: var(--text-primary);
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-        .social-link:hover {
-            background: rgba(233, 69, 96, 0.3);
-            transform: translateY(-2px);
         }
         
+        .social-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
         footer {
             text-align: center;
-            margin-top: 3rem;
-            color: #606060;
-            font-size: 0.8rem;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
         
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .section { padding: 1.5rem; }
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; }
+            .tagline { font-size: 1rem; }
+            .section { padding: 4rem 1.5rem; }
+            .cards-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>EVE LABS</h1>
-        <p class="subtitle">Drulen • Pergaminos Prohibidos • Automatización con IA • Audio Bundle</p>
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="logo">EVE LABS</h1>
+        <p class="tagline">Drulen • Pergaminos Prohibidos • Automatización con IA • Audio Bundle</p>
+        <div class="scroll-indicator">↓ Scroll para explorar</div>
+    </section>
+    
+    <!-- Canales -->
+    <section class="section">
+        <h2 class="section-title"><span>📺</span> Canales</h2>
+        <p class="section-subtitle">Contenido diverso para todos los gustos</p>
         
-        <!-- CANALES -->
-        <div class="section">
-            <h2>📺 Canales</h2>
-            <div class="channels-grid">
-                <a href="https://youtube.com/@drulen" class="channel-card" target="_blank">
-                    <span class="channel-badge">YouTube</span>
-                    <h3>DRULEN</h3>
-                    <p>Canal de terror y historias reales. Vídeos que te mantendrán en vilo.</p>
-                </a>
-                <a href="https://youtube.com/@pergaminosprohibidos" class="channel-card" target="_blank">
-                    <span class="channel-badge">YouTube</span>
-                    <h3>PERGAMINOS PROHIBIDOS</h3>
-                    <p>Misterios, historia oculta y conspiraciones. La verdad que no te cuentan.</p>
-                </a>
-                <a href="https://youtube.com/@jc" class="channel-card" target="_blank">
-                    <span class="channel-badge">YouTube</span>
-                    <h3>JC</h3>
-                    <p>Tutoriales de automatización con IA. Aprende a optimizar tu negocio con herramientas modernas.</p>
-                </a>
-            </div>
+        <div class="cards-grid">
+            <a href="https://youtube.com/@drulen" class="card" target="_blank">
+                <div class="card-badge">YouTube</div>
+                <h3>DRULEN</h3>
+                <p>Canal de terror y historias reales. Vídeos que te mantendrán en vilo.</p>
+            </a>
+            
+            <a href="https://youtube.com/@pergaminosprohibidos" class="card" target="_blank">
+                <div class="card-badge">YouTube</div>
+                <h3>PERGAMINOS PROHIBIDOS</h3>
+                <p>Misterios, historia oculta y conspiraciones. La verdad que no te cuentan.</p>
+            </a>
+            
+            <a href="https://youtube.com/@jc" class="card" target="_blank">
+                <div class="card-badge">YouTube</div>
+                <h3>JC</h3>
+                <p>Tutoriales de automatización con IA. Aprende a optimizar tu negocio con herramientas modernas.</p>
+            </a>
         </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- Audio Bundle -->
+    <section class="section">
+        <h2 class="section-title"><span>🎵</span> Audio Bundle</h2>
+        <p class="section-subtitle">Experiencias sonoras para tu bienestar</p>
         
-        <!-- AUDIO BUNDLE -->
-        <div class="section">
-            <h2>🎵 Audio Bundle</h2>
-            <div class="products-grid">
-                <a href="https://audiobundle.gumroad.com" class="product-card" target="_blank">
-                    <span class="channel-badge">Meditación</span>
-                    <h3>Calm Mind — Audio Bundle</h3>
-                    <p>10 tracks de meditación en español e inglés. Música relajante para tu bienestar diario.</p>
-                    <span class="product-price">Ver en Gumroad →</span>
-                </a>
-            </div>
+        <div class="cards-grid">
+            <a href="https://audiobundle.gumroad.com" class="card" target="_blank">
+                <div class="card-badge">Meditación</div>
+                <h3>Calm Mind — Audio Bundle</h3>
+                <p>10 tracks de meditación en español e inglés. Música relajante para tu bienestar diario.</p>
+                <span class="product-btn" style="margin-top: 1rem; display: inline-block;">Ver en Gumroad →</span>
+            </a>
         </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- Productos -->
+    <section class="section">
+        <h2 class="section-title"><span>📚</span> Productos</h2>
+        <p class="section-subtitle">Recursos para tu estilo de vida</p>
         
-        <!-- PRODUCTOS -->
-        <div class="section">
-            <h2>📚 Productos</h2>
-            <div class="products-grid">
-                <a href="https://drulen.gumroad.com/l/the-complete-self-sufficiency-handbook-2026" class="product-card" target="_blank">
-                    <h3>The Complete Self-Sufficiency Handbook 2026</h3>
-                    <p>Guía completa para vida off-grid. Solar, agua, autosuficiencia.</p>
-                    <span class="product-price">Ver en Gumroad →</span>
-                </a>
-                <a href="https://drulen.gumroad.com/l/the-off-grid-solar-guide-2026" class="product-card" target="_blank">
-                    <h3>The Off-Grid Solar Guide 2026</h3>
-                    <p>Domina la energía solar para tu hogar autosuficiente.</p>
-                    <span class="product-price">Ver en Gumroad →</span>
-                </a>
-            </div>
+        <div class="cards-grid">
+            <a href="https://drulen.gumroad.com/l/the-complete-self-sufficiency-handbook-2026" class="product-card" target="_blank">
+                <h3>The Complete Self-Sufficiency Handbook 2026</h3>
+                <p>Guía completa para vida off-grid. Solar, agua, autosuficiencia.</p>
+                <span class="product-btn">Ver en Gumroad →</span>
+            </a>
+            
+            <a href="https://drulen.gumroad.com/l/the-off-grid-solar-guide-2026" class="product-card" target="_blank">
+                <h3>The Off-Grid Solar Guide 2026</h3>
+                <p>Domina la energía solar para tu hogar autosuficiente.</p>
+                <span class="product-btn">Ver en Gumroad →</span>
+            </a>
         </div>
-        
-        <!-- SOCIAL -->
-        <div class="social-links">
-            <a href="https://youtube.com/@drulen" class="social-link" target="_blank">📺 YouTube</a>
-            <a href="https://www.facebook.com/drulen" class="social-link" target="_blank">📘 Facebook</a>
-            <a href="https://bsky.app/profile/evelin35.bsky.social" class="social-link" target="_blank">☁️ Bluesky</a>
-            <a href="https://www.reddit.com/user/pergaminosprohibidos" class="social-link" target="_blank">🤖 Reddit</a>
-        </div>
-        
-        <footer>
-            <p>© 2026 Eve Labs — <a href="https://youtube.com/@drulen">YouTube</a></p>
-        </footer>
+    </section>
+    
+    <!-- Social -->
+    <div class="social-links">
+        <a href="https://youtube.com/@drulen" class="social-link" target="_blank">📺 YouTube</a>
+        <a href="https://www.facebook.com/drulen" class="social-link" target="_blank">📘 Facebook</a>
+        <a href="https://bsky.app/profile/evelin35.bsky.social" class="social-link" target="_blank">☁️ Bluesky</a>
+        <a href="https://www.reddit.com/user/pergaminosprohibidos" class="social-link" target="_blank">🤖 Reddit</a>
     </div>
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Eve Labs — <a href="https://youtube.com/@drulen">YouTube</a></p>
+    </footer>
 </body>
 </html>
