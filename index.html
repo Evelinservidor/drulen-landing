@@ -3,85 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drulen — Historias que no te contaron</title>
-    <meta name="description" content="Canal de terror, misterio e historias reales. Vídeos que te mantendrán en vilo.">
+    <title>Jordi Castañeira — Contenido & Productos</title>
+    <meta name="description" content="Drulen, Pergaminos Prohibidos, Audio Bundle. Historias, misterios y bienestar.">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: #e0e0e0;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             padding: 2rem;
         }
         .container {
-            max-width: 800px;
-            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
         h1 {
-            font-size: 4rem;
+            font-size: 3rem;
+            text-align: center;
             color: #e94560;
             text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
             margin-bottom: 0.5rem;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
         }
-        .tagline {
-            font-size: 1.4rem;
+        .subtitle {
+            text-align: center;
             color: #a0a0a0;
             margin-bottom: 3rem;
+            font-size: 1.2rem;
         }
-        .channels {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        .channel {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-        .channel:hover {
-            background: rgba(233, 69, 96, 0.3);
-            border-color: #e94560;
-            transform: translateY(-2px);
-        }
-        .channel-icon {
-            width: 24px;
-            height: 24px;
-        }
-        .products {
+        
+        .section {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 2rem;
-            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
-        .products h2 {
+        .section h2 {
             color: #e94560;
             margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .product-grid {
+        
+        .channels-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1rem;
         }
-        .product {
+        .channel-card {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 12px;
             padding: 1.5rem;
@@ -89,17 +61,53 @@
             color: #fff;
             transition: all 0.3s ease;
         }
-        .product:hover {
+        .channel-card:hover {
             background: rgba(233, 69, 96, 0.2);
-            transform: scale(1.02);
+            transform: translateY(-3px);
         }
-        .product h3 {
+        .channel-card h3 {
             color: #e94560;
             margin-bottom: 0.5rem;
         }
-        .product p {
-            font-size: 0.9rem;
+        .channel-card p {
             color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+        .channel-badge {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .product-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            background: rgba(233, 69, 96, 0.2);
+            transform: scale(1.02);
+        }
+        .product-card h3 {
+            color: #e94560;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .product-card p {
+            color: #a0a0a0;
+            font-size: 0.85rem;
         }
         .product-price {
             display: inline-block;
@@ -108,65 +116,108 @@
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             margin-top: 0.8rem;
-            font-weight: bold;
+            font-size: 0.85rem;
         }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .social-link:hover {
+            background: rgba(233, 69, 96, 0.3);
+            transform: translateY(-2px);
+        }
+        
         footer {
+            text-align: center;
             margin-top: 3rem;
             color: #606060;
             font-size: 0.8rem;
         }
-        footer a {
-            color: #a0a0a0;
-            text-decoration: none;
-        }
+        
         @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .channels { flex-direction: column; }
+            h1 { font-size: 2rem; }
+            .section { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>DRULEN</h1>
-        <p class="tagline">Historias que no te contaron</p>
+        <h1>JORDI CASTAÑEIRA</h1>
+        <p class="subtitle">Drulen • Pergaminos Prohibidos • Audio Bundle</p>
         
-        <div class="channels">
-            <a href="https://youtube.com/@drulen" class="channel" target="_blank">
-                <svg class="channel-icon" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                YouTube
-            </a>
-            <a href="https://www.facebook.com/drulen" class="channel" target="_blank">
-                <svg class="channel-icon" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                Facebook
-            </a>
-            <a href="https://bsky.app/profile/evelin35.bsky.social" class="channel" target="_blank">
-                <svg class="channel-icon" viewBox="0 0 24 24" fill="#1185FE"><path d="M12 2L2 19.5h20L12 2zm0 4.5l6.5 11.5h-13L12 6.5z"/></svg>
-                Bluesky
-            </a>
-            <a href="https://www.reddit.com/user/pergaminosprohibidos" class="channel" target="_blank">
-                <svg class="channel-icon" viewBox="0 0 24 24" fill="#FF4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547c-.798-.121-1.62.425-1.729 1.178l.016-.016c.123.853.99 1.305 1.76 1.191.548-.08 1.003-.533 1.006-1.098l.016-.016a1.853 1.853 0 0 1-.046-1.967zm-9.02 7.866c-.845-.115-1.58.525-1.694 1.434l-.016.016c.144-.909.978-1.435 1.76-1.191.771.115 1.637.533 1.637 1.098l-.016.016c-.004-.565-.459-1.009-1.02-1.096l-.651-.267zm4.996 3.373c.468.545.846.67 1.139.67.293 0 .453-.126.453-.378 0-.252-.16-.377-.453-.377-.293 0-.671-.124-1.139-.67zm-7.164-.503c.502.58.908 1.022 1.139.67.231-.352.231-.879 0-1.231-.503-.58-.908-1.022-1.139-.67-.231.352-.231.879 0 1.231z"/></svg>
-                Reddit
-            </a>
+        <!-- CANALES -->
+        <div class="section">
+            <h2>📺 Canales</h2>
+            <div class="channels-grid">
+                <a href="https://youtube.com/@drulen" class="channel-card" target="_blank">
+                    <span class="channel-badge">YouTube</span>
+                    <h3>DRULEN</h3>
+                    <p>Canal de terror y historias reales. Vídeos que te mantendrán en vilo.</p>
+                </a>
+                <a href="https://youtube.com/@pergaminosprohibidos" class="channel-card" target="_blank">
+                    <span class="channel-badge">YouTube</span>
+                    <h3>PERGAMINOS PROHIBIDOS</h3>
+                    <p>Misterios, historia oculta y conspiraciones. La verdad que no te cuentan.</p>
+                </a>
+            </div>
         </div>
-
-        <div class="products">
+        
+        <!-- AUDIO BUNDLE -->
+        <div class="section">
+            <h2>🎵 Audio Bundle</h2>
+            <div class="products-grid">
+                <a href="https://audiobundle.gumroad.com" class="product-card" target="_blank">
+                    <span class="channel-badge">Meditación</span>
+                    <h3>Calm Mind — Audio Bundle</h3>
+                    <p>10 tracks de meditación en español e inglés. Música relajante para tu bienestar diario.</p>
+                    <span class="product-price">Ver en Gumroad →</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- PRODUCTOS -->
+        <div class="section">
             <h2>📚 Productos</h2>
-            <div class="product-grid">
-                <a href="https://drulen.gumroad.com/l/the-complete-self-sufficiency-handbook-2026" class="product">
+            <div class="products-grid">
+                <a href="https://drulen.gumroad.com/l/the-complete-self-sufficiency-handbook-2026" class="product-card" target="_blank">
                     <h3>The Complete Self-Sufficiency Handbook 2026</h3>
                     <p>Guía completa para vida off-grid. Solar, agua, autosuficiencia.</p>
                     <span class="product-price">Ver en Gumroad →</span>
                 </a>
-                <a href="https://drulen.gumroad.com/l/the-off-grid-solar-guide-2026" class="product">
+                <a href="https://drulen.gumroad.com/l/the-off-grid-solar-guide-2026" class="product-card" target="_blank">
                     <h3>The Off-Grid Solar Guide 2026</h3>
                     <p>Domina la energía solar para tu hogar autosuficiente.</p>
                     <span class="product-price">Ver en Gumroad →</span>
                 </a>
             </div>
         </div>
-
+        
+        <!-- SOCIAL -->
+        <div class="social-links">
+            <a href="https://youtube.com/@drulen" class="social-link" target="_blank">📺 YouTube</a>
+            <a href="https://www.facebook.com/drulen" class="social-link" target="_blank">📘 Facebook</a>
+            <a href="https://bsky.app/profile/evelin35.bsky.social" class="social-link" target="_blank">☁️ Bluesky</a>
+            <a href="https://www.reddit.com/user/pergaminosprohibidos" class="social-link" target="_blank">🤖 Reddit</a>
+        </div>
+        
         <footer>
-            <p>© 2026 Drulen — <a href="https://youtube.com/@drulen">YouTube</a> | <a href="https://bsky.app/profile/evelin35.bsky.social">Bluesky</a></p>
+            <p>© 2026 Jordi Castañeira — <a href="https://youtube.com/@drulen">YouTube</a></p>
         </footer>
     </div>
 </body>
